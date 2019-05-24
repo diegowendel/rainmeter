@@ -1,12 +1,13 @@
+import axios from "axios";
 
 class Requester {
 
-  get(url) {
-    console.log('get', url);
+  static get(url) {
+    return axios.get(url);
   }
 
-  post(url, json) {
-    console.log('post', url);
+  static post(url, json) {
+    return axios.post(url, JSON.stringify(json));
   }
 
   static getBaseUrl() {
@@ -17,7 +18,6 @@ class Requester {
     console.log('href', href);
     console.log('uri', uri);
   }
-
 }
 
 export default Requester;
