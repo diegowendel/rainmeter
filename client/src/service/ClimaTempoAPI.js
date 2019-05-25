@@ -3,8 +3,13 @@ import { API_TOKEN } from "../utils/Constantes";
 
 class ClimaTempoAPI {
 
-  static getCidades(name, state) {
-    const encodedUri = encodeURI(`http://apiadvisor.climatempo.com.br/api/v1/locale/city?name=${name}&state=${state}&token=${API_TOKEN}`);
+  static getCitiesFromState(state) {
+    const encodedUri = encodeURI(`http://apiadvisor.climatempo.com.br/api/v1/locale/city?state=${state}&token=${API_TOKEN}`);
+    return Requester.get(encodedUri);
+  }
+
+  static getWeatherByCity(city) {
+    const encodedUri = encodeURI(`http://apiadvisor.climatempo.com.br/api/v1/weather/locale/${city}/current?token=${API_TOKEN}`);
     return Requester.get(encodedUri);
   }
 }
