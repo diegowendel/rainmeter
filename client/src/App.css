@@ -31,3 +31,38 @@
     transform: rotate(360deg);
   }
 }
+
+.forecast-panel {
+  background-color: #61dafb;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.forecast-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.forecast-temperature {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.forecast-rain {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.forecast-wind {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}

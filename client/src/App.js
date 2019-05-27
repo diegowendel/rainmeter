@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import API from "./service/ClimaTempoAPI";
-import Select from "react-select";
-import { stateOptions } from './data/Data';
+import API from './service/ClimaTempoAPI';
+import { CitySelect, StateSelect } from './components/select';
+import ForecastPanel from './components/forecast/ForecastPanel';
 
 class App extends Component {
 
@@ -26,9 +25,7 @@ class App extends Component {
 
   findCities(state) {
     this.setState({loadingCities: true});
-    console.log(state);
     API.getCitiesFromState(state).then(res => {
-      console.log('res', res.data);
       this.setState({
         cities : res.data,
         loadingCities: false
@@ -45,8 +42,7 @@ class App extends Component {
   }
 
   onPress() {
-    console.log('this.state.selectedCity',this.state.selectedCity)
-    API.getWeatherByCity(this.state.selectedCity.id).then(res => {
+    API.getForecastSevenDays(this.state.selectedCity.id).then(res => {
       console.log('WEATHER', res);
       this.setState({forecast: res.data});
     }).catch(/* todo */);
@@ -56,44 +52,21 @@ class App extends Component {
     return (
       <div className="container">
         <header className="">
-          <Select
-            className="basic-single"
-            classNamePrefix="select"
-            isDisabled={false}
-            isLoading={false}
-            isClearable={true}
-            isRtl={false}
-            isSearchable={true}
-            name="color"
-            options={stateOptions}
-            onChange={(selectedState) => this.onChange("selectedState", selectedState)}
-            value={this.state.selectedState}
-            placeholder="Selecione seu estado..."
-          />
 
-          <Select
-            className="basic-single"
-            classNamePrefix="select"
+          <StateSelect onChange={this.onChange}
+            value={this.state.selectedState} />
+
+          <CitySelect
             isDisabled={!this.state.selectedState}
             isLoading={this.state.loadingCities}
-            isClearable={true}
-            isRtl={false}
-            isSearchable={true}
-            name="color"
-            getOptionLabel={(option) => option.name}
-            getOptionValue={(option) => option.id}
+            onChange={this.onChange}
             options={this.state.cities}
-            onChange={(selectedCity) => this.onChange("selectedCity", selectedCity)}
-            value={this.state.selectedCity}
-            placeholder="Selecione sua cidade..."
-          />
+            value={this.state.selectedCity} />
 
           {this.state.forecast &&
-            <Fragment>
-              <p>Tempo em {this.state.forecast.name}</p>
-              <p>Condição: {this.state.forecast.data.condition}</p>
-              <p>Temperatura: {this.state.forecast.data.temperature}</p>
-            </Fragment>
+            <ForecastPanel
+              forecast={this.state.forecast}
+            />
           }
 
           <button onClick={this.onPress}>Click Me!</button>
