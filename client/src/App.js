@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import API from './service/ClimaTempoAPI';
 import { CitySelect, StateSelect } from './components/select';

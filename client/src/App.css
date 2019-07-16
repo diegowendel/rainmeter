@@ -23,6 +23,10 @@
   color: #61dafb;
 }
 
+.clicable {
+  cursor: pointer;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -33,12 +37,11 @@
 }
 
 .forecast-panel {
-  background-color: #61dafb;
+  background-color: #eee;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
 }
 
 .forecast-item {
@@ -65,4 +68,13 @@
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
+}
+
+.forecast-weekday {
+  align-self: center;
+}
+
+.forecast-selected-day {
+  border: solid #000;
+  border-width: 2px;
 }
