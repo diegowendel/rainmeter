@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DateUtils from '../../utils/DateUtils';
+import ForecastDetails from './ForecastDetails';
 
 class ForecastPanel extends Component {
 
@@ -15,13 +16,19 @@ class ForecastPanel extends Component {
   }
 
   handleOnClick(index, day) {
+    console.log('DAY', day);
     this.setState({ selected: index, day: day });
   }
+
 
   render() {
     return (
       <div className="forecast-panel">
-        <div style={{height: '200px'}}>{this.state.day && DateUtils.getDayOfWeek(this.state.day.date)}</div>
+        <div style={{height: '200px'}}>
+          {
+            this.state.day && <ForecastDetails day={this.state.day} />
+          }
+        </div>
         <div className="forecast-cards">
           {this.props.forecast.data.map((day, index) => {
             const classForecastDay = this.state.selected === index ? "forecast-card clicable forecast-selected-day" : "forecast-card clicable";

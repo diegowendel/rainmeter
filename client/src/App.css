@@ -45,6 +45,41 @@
   padding: 15px;
 }
 
+.forecast-panel-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.forecast-panel-details-info {
+  color: #878787;
+  text-align: left;
+}
+
+.forecast-panel-details-right {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: flex-start;
+  color: #878787;
+  text-align: left;
+}
+
+.forecast-temperature-highlight {
+  color: #212121;
+  font-size: 64px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
 .forecast-cards {
   background-color: #fff;
   border-radius: 10px;
