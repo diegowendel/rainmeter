@@ -36,6 +36,25 @@
   }
 }
 
+.icon {
+  width: 120px;
+  height: 120px;
+}
+
+.card-icon {
+  width: 64px;
+  height: 62px;
+  align-self: center;
+}
+
+.temperature-min {
+  color: #bababa;
+}
+
+.temperature-max {
+ color: #878787;
+}
+
 .forecast-panel {
   background-color: #fff;
   border-radius: 5px;
@@ -43,12 +62,13 @@
   display: flex;
   flex-direction: column;
   padding: 15px;
+  width: 600px;
 }
 
 .forecast-panel-details {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  padding: 15px;
 }
 
 .forecast-panel-details-info {
@@ -56,13 +76,9 @@
   text-align: left;
 }
 
-.forecast-panel-details-right {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  justify-content: flex-start;
+.forecast-panel-details-info-right {
   color: #878787;
-  text-align: left;
+  padding-left: 50px;
 }
 
 .forecast-temperature-highlight {
@@ -82,8 +98,6 @@
 
 .forecast-cards {
   background-color: #fff;
-  border-radius: 10px;
-  border: 1px solid #ddd;
   display: flex;
   flex-direction: row;
   padding: 15px;
@@ -93,9 +107,8 @@
   border: 1px solid transparent;
   border-radius: 3px;
   display: flex;
-  flex: 1;
   flex-direction: column;
-  justify-content: space-between;
+  width: 75px;
 }
 
 .forecast-temperature {
@@ -129,4 +142,17 @@
   border: 1px solid #e9e9e9;
   border-radius: 3px;
   margin: 0;
+}
+
+.link-climatempo {
+  color: #878787;
+  display: block;
+  font-size: 11px;
+  margin: 5px;
+  padding-left: 20px;
+  text-decoration: none;
+}
+
+.link-climatempo:hover {
+  color: #878787;
 }

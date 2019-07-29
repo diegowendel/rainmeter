@@ -1,13 +1,13 @@
 import Moment from 'moment';
 
 const dayOfWeekShort = {
-  0: "Dom",
-  1: "Seg",
-  2: "Ter",
-  3: "Qua",
-  4: "Qui",
-  5: "Sex",
-  6: "Sab"
+  0: "dom",
+  1: "seg",
+  2: "ter",
+  3: "qua",
+  4: "qui",
+  5: "sex",
+  6: "sab"
 }
 
 const dayOfWeek = {

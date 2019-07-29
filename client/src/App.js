@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import API from './service/ClimaTempoAPI';
 import { CitySelect, StateSelect } from './components/select';
@@ -66,9 +66,10 @@ class App extends Component {
             value={this.state.selectedCity} />
 
           {this.state.forecast &&
-            <ForecastPanel
-              forecast={this.state.forecast}
-            />
+            <Fragment>
+              <ForecastPanel forecast={this.state.forecast}/>
+              <a className="link-climatempo" href="https://www.climatempo.com.br/">climatempo.com.br</a>
+            </Fragment>
           }
 
           <button onClick={this.onPress}>Click Me!</button>
