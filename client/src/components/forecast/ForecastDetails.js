@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import DateUtils from '../../utils/DateUtils';
+import TemperatureHighlight from './TemperatureHighlight';
+import WindSpeed from './WindSpeed';
 
 class ForecastDetails extends Component {
 
   render() {
-    const { date, humidity, rain, temperature, text_icon, wind } = this.props.day;
+    const { day, isCelsiusScale, onChangeScale } = this.props;
+    const { date, humidity, rain, temperature, text_icon, wind } = day;
     return (
       <div className="forecast-panel-details">
         <div className="flex-column">
@@ -16,13 +19,18 @@ class ForecastDetails extends Component {
             <img src={`${process.env.PUBLIC_URL}/img/${text_icon.icon.day}.svg`}
               alt="Logo"
               className="icon" />
-            <span className="forecast-temperature-highlight">{temperature.max}ºC</span>
+            <TemperatureHighlight isCelsiusScale={isCelsiusScale} temperature={temperature.max} />
+            <div className="temperature-scales-toggle">
+              <span className={isCelsiusScale ? "temperature-active" : "temperature-inactive"} onClick={isCelsiusScale ? null : onChangeScale}>ºC</span>
+              <span>&nbsp;|&nbsp;</span>
+              <span className={isCelsiusScale ? "temperature-inactive" : "temperature-active"} onClick={isCelsiusScale ? onChangeScale : null}>ºF</span>
+            </div>
           </div>
         </div>
         <div className="flex-column forecast-panel-details-info-right">
           <span>Chuva: {rain.probability}%</span>
           <span>Umidade: {humidity.max}%</span>
-          <span>Vento: {wind.velocity_avg} km/h</span>
+          <WindSpeed isCelsiusScale={isCelsiusScale} speed={wind.velocity_avg} />
         </div>
       </div>
     );

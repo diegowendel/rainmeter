@@ -156,3 +156,22 @@
 .link-climatempo:hover {
   color: #878787;
 }
+
+.temperature-active {
+  color: #212121;
+  font-size: 16px;
+}
+
+.temperature-inactive {
+  color: #1a0dab;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.temperature-scales-toggle {
+  padding-top: 20px;
+}
+
+.d-none {
+  display: none;
+}
