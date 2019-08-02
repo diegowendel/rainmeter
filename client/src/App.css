@@ -55,6 +55,11 @@
  color: #878787;
 }
 
+.forecast-chart {
+  padding: 0px 15px;
+  height: 100px;
+}
+
 .forecast-panel {
   background-color: #fff;
   border-radius: 5px;
@@ -68,7 +73,7 @@
 .forecast-panel-details {
   display: flex;
   flex-direction: row;
-  padding: 15px;
+  padding: 10px 15px 0px 15px;
 }
 
 .forecast-panel-details-info {
@@ -100,7 +105,7 @@
   background-color: #fff;
   display: flex;
   flex-direction: row;
-  padding: 15px;
+  padding: 0px 15px 10px 15px;
 }
 
 .forecast-card {
@@ -116,6 +121,8 @@
   flex-direction: row;
   justify-content: space-around;
   color: #bababa;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .forecast-rain {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DateUtils from '../../utils/DateUtils';
+import ForecastChart from './ForecastChart';
 import ForecastDetails from './ForecastDetails';
 import TemperatureCard from './TemperatureCard';
 
@@ -11,7 +12,35 @@ class ForecastPanel extends Component {
     this.state = {
       day: props.forecast.data[0],
       isCelsiusScale: true,
-      selected: 0
+      selected: 0,
+      options: {
+        chart: {
+          type: 'spline',
+          height: 100
+        },
+        credits: {
+          enabled: false
+        },
+        title: {
+          text: null
+        },
+        tooltip: {
+          enabled: false
+        },
+        legend: {
+          enabled: false
+        },
+        xAxis: [
+          {
+            visible: false
+          }
+        ],
+        yAxis: [
+          {
+            visible: false
+          }
+        ]
+      }
     };
 
     this.handleOnClick = this.handleOnClick.bind(this);
@@ -19,7 +48,20 @@ class ForecastPanel extends Component {
   }
 
   handleOnClick(index, day) {
-    this.setState({ selected: index, day: day });
+    const { temperature } = day;
+    const dayTemperatures = [
+      {
+        data: [
+          temperature.dawn.max,
+          temperature.morning.max,
+          temperature.afternoon.max,
+          temperature.night.max
+        ]
+      }
+    ];
+    let options = {...this.state.options};
+    options.series = dayTemperatures;
+    this.setState({ selected: index, day, options });
   }
 
   onChangeScale() {
@@ -30,6 +72,7 @@ class ForecastPanel extends Component {
     return (
       <div className="forecast-panel">
         <ForecastDetails day={this.state.day} isCelsiusScale={this.state.isCelsiusScale} onChangeScale={this.onChangeScale} />
+        <ForecastChart options={this.state.options} />
         <div className="forecast-cards">
           {this.props.forecast.data.map((day, index) => {
             const classForecastDay = this.state.selected === index ? "forecast-card clicable forecast-selected-day" : "forecast-card clicable";
