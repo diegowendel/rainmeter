@@ -3,11 +3,13 @@ import DateUtils from '../../utils/DateUtils';
 import ForecastChart from './ForecastChart';
 import ForecastDetails from './ForecastDetails';
 import TemperatureCard from './TemperatureCard';
+import Highcharts, { chart, rectangle } from 'highcharts';
 
 class ForecastPanel extends Component {
 
   constructor(props) {
     super(props);
+
 
     this.state = {
       day: props.forecast.data[0],
@@ -15,8 +17,38 @@ class ForecastPanel extends Component {
       selected: 0,
       options: {
         chart: {
-          type: 'spline',
-          height: 100
+          height: 100,
+          type: 'area',
+          animation: Highcharts.svg, // don't animate in old IE
+          marginRight: 10,
+          events: {
+              load: function () {
+
+                  // set up the updating of the chart each second
+                  var series = this.series[0];
+                  setInterval(function () {
+                      var x = (new Date()).getTime(), // current time
+                          y = Math.floor(Math.random() * (40 - 10 + 1)) + 10
+                      series.addPoint([x, y], true, true);
+                  }, 1000);
+              },
+              selection: function(event) {
+              var xMin = chart.xAxis[0].translate((event.xAxis[0]||chart.xAxis[0]).min),
+                  xMax = chart.xAxis[0].translate((event.xAxis[0]||chart.xAxis[0]).max),
+                  yMin = chart.yAxis[0].translate((event.yAxis[0]||chart.yAxis[0]).min),
+                  yMax = chart.yAxis[0].translate((event.yAxis[0]||chart.yAxis[0]).max);
+
+              rectangle.attr({
+                  x: xMin + chart.plotLeft,
+                  y: chart.plotHeight + chart.plotTop - yMax,
+                  width: xMax - xMin,
+                  height: yMax - yMin
+              });
+
+              return false;
+            }
+          },
+          zoomType: null
         },
         credits: {
           enabled: false
@@ -39,7 +71,35 @@ class ForecastPanel extends Component {
           {
             visible: false
           }
-        ]
+        ],
+        plotOptions: {
+          area: {
+              dataLabels: {
+                  enabled: true
+              },
+              marker: {
+                enabled: false
+              },
+              enableMouseTracking: false
+          }
+        },
+        series: [{
+          name: 'Random data',
+          data: (function () {
+              // generate an array of random data
+              var data = [],
+                  time = (new Date()).getTime(),
+                  i;
+
+              for (i = -8; i <= 0; i += 1) {
+                  data.push({
+                      x: time + i * 1000,
+                      y: Math.floor(Math.random() * (40 - 10 + 1)) + 10
+                  });
+              }
+              return data;
+          }())
+      }]
       }
     };
 
@@ -55,7 +115,8 @@ class ForecastPanel extends Component {
           temperature.dawn.max,
           temperature.morning.max,
           temperature.afternoon.max,
-          temperature.night.max
+          temperature.night.max,
+          20,21,30,25,20,11,15,18,10,19
         ]
       }
     ];
