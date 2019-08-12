@@ -6,8 +6,8 @@ class WindSpeed extends PureComponent {
     const { isCelsiusScale, speed } = this.props;
     return (
       <Fragment>
-        <span className={isCelsiusScale || "d-none"}>Vento: {speed} km/h</span>
-        <span className={isCelsiusScale && "d-none"}>Vento: {ConversionUtils.toMPH(speed)} mph</span>
+        <span className={isCelsiusScale ? "" : "d-none"}>Vento: {speed} km/h</span>
+        <span className={isCelsiusScale ? "d-none" : ""}>Vento: {ConversionUtils.toMPH(speed)} mph</span>
       </Fragment>
     );
   }

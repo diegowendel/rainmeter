@@ -7,7 +7,9 @@ class ForecastChart extends Component {
   render() {
     return (
       <div className="forecast-chart">
-        <HighchartsReact highcharts={Highcharts} options={this.props.options} />
+        <HighchartsReact containerProps={{className: this.props.shift}}
+          highcharts={Highcharts}
+          options={this.props.options} />
       </div>
     );
   }

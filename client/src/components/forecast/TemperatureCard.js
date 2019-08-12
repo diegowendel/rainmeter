@@ -1,9 +1,8 @@
 import React, { Fragment, PureComponent } from 'react';
-import ConversionUtils from '../../utils/ConversionUtils';
 
 class TemperatureCard extends PureComponent {
   render() {
-    const { isCelsiusScale, max, min } = this.props;
+    const { isCelsiusScale, max, maxf, min, minf } = this.props;
     return (
       <Fragment>
         <div className={isCelsiusScale ? "forecast-temperature" : "d-none"}>
@@ -11,8 +10,8 @@ class TemperatureCard extends PureComponent {
           <span className="temperature-max">{max}°</span>
         </div>
         <div className={isCelsiusScale ? "d-none" : "forecast-temperature"}>
-          <span className="temperature-min">{ConversionUtils.toFahrenheit(min)}°</span>
-          <span className="temperature-max">{ConversionUtils.toFahrenheit(max)}°</span>
+          <span className="temperature-min">{minf}°</span>
+          <span className="temperature-max">{maxf}°</span>
         </div>
       </Fragment>
     );

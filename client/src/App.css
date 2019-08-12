@@ -182,3 +182,38 @@
 .d-none {
   display: none;
 }
+
+.shift0 > div {
+  transition: transform .3s ease-out;
+  transform: translate(-30px, 0px);
+}
+
+.shift1 > div {
+  transition: transform .3s ease-out;
+  transform: translate(-500px, 0px);
+}
+
+.shift2 > div {
+  transition: transform .3s ease-out;
+  transform: translate(-1000px, 0px);
+}
+
+.shift3 > div {
+  transition: transform .3s ease-out;
+  transform: translate(-1500px, 0px);
+}
+
+.shift4 > div {
+  transition: transform .3s ease-out;
+  transform: translate(-2000px, 0px);
+}
+
+.shift5 > div {
+  transition: transform .3s ease-out;
+  transform: translate(-2500px, 0px);
+}
+
+.shift6 > div {
+  transition: transform .3s ease-out;
+  transform: translate(-3500px, 0px);
+}

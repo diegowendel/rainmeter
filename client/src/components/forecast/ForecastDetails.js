@@ -19,7 +19,9 @@ class ForecastDetails extends Component {
             <img src={`${process.env.PUBLIC_URL}/img/${text_icon.icon.day}.svg`}
               alt="Logo"
               className="icon" />
-            <TemperatureHighlight isCelsiusScale={isCelsiusScale} temperature={temperature.max} />
+            <TemperatureHighlight isCelsiusScale={isCelsiusScale}
+              temperature={temperature.max}
+              temperaturef={temperature.maxf} />
             <div className="temperature-scales-toggle">
               <span className={isCelsiusScale ? "temperature-active" : "temperature-inactive"} onClick={isCelsiusScale ? null : onChangeScale}>ºC</span>
               <span>&nbsp;|&nbsp;</span>
