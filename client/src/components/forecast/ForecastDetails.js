@@ -33,6 +33,11 @@ class ForecastDetails extends Component {
           <span>Chuva: {rain.probability}%</span>
           <span>Umidade: {humidity.max}%</span>
           <WindSpeed isCelsiusScale={isCelsiusScale} speed={wind.velocity_avg} />
+          <div className="btn-group-chart">
+            <button className="btn-chart" onClick={() => this.props.onChangeChart(0)}>Temperatura</button>
+            <button className="btn-chart" onClick={() => this.props.onChangeChart(1)}>Umidade</button>
+            <button className="btn-chart" onClick={() => this.props.onChangeChart(2)}>Vento</button>
+          </div>
         </div>
       </div>
     );

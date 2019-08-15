@@ -217,3 +217,15 @@
   transition: transform .3s ease-out;
   transform: translate(-3500px, 0px);
 }
+
+.btn-group-chart {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+}
+
+.btn-chart {
+  background-color: #f8f8f8;
+  border: 1px solid #c6c6c6;
+  color: #222;
+}

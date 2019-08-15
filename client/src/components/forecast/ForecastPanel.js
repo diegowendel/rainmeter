@@ -3,7 +3,6 @@ import DateUtils from '../../utils/DateUtils';
 import ForecastChart from './ForecastChart';
 import ForecastDetails from './ForecastDetails';
 import TemperatureCard from './TemperatureCard';
-import Highcharts from 'highcharts';
 
 class ForecastPanel extends Component {
 
@@ -11,16 +10,16 @@ class ForecastPanel extends Component {
     super(props);
 
     this.state = {
+      chartSelected: 0,
       day: props.forecast.data[0],
       isCelsiusScale: true,
       selected: 0,
       shiftClass: "shift0",
       options: {
         chart: {
-          width: 3500,
+          animation: false,
           height: 100,
-          type: 'area',
-          animation: Highcharts.svg, // don't animate in old IE
+          width: 3500,
           zoomType: null
         },
         credits: {
@@ -46,19 +45,23 @@ class ForecastPanel extends Component {
           }
         ],
         plotOptions: {
+          series: {
+            enableMouseTracking: false,
+            marker: {
+              enabled: false
+            }
+          },
           area: {
-              dataLabels: {
-                  enabled: true
-              },
-              marker: {
-                enabled: false
-              },
-              enableMouseTracking: false
+            dataLabels: {
+              color: '#878787',
+              enabled: true
+            }
           }
         },
         series: [
           {
-            name: 'Climatempo data',
+            name: 'Temperatura',
+            color: '#FFF4D6',
             dataLabels: [{
               format: '{point.celsius}'
             }],
@@ -88,18 +91,91 @@ class ForecastPanel extends Component {
                   });
                 };
                 return data;
-            }())
+            }()),
+            lineColor: '#FCCB00',
+            type: 'area',
+            visible: true
+          },
+          {
+            name: 'Chuva',
+            color: '#e3f2fd',
+            dataLabels: [{
+              format: '{point.y}%'
+            }],
+            data: (function () {
+                let data = [];
+                for (let day of props.forecast.data) {
+                  let humidity = day.humidity;
+                  data.push({
+                    y: humidity.dawn.max
+                  });
+                  data.push({
+                    y: humidity.morning.max
+                  });
+                  data.push({
+                    y: humidity.afternoon.max
+                  });
+                  data.push({
+                    y: humidity.night.max
+                  });
+                };
+                return data;
+            }()),
+            lineColor: '#90caf9',
+            type: 'area',
+            visible: false
+          },
+          {
+            name: 'Vento',
+            dataLabels: [{
+              format: '({point.celsius})'
+            }],
+            data: (function () {
+                let data = [];
+                for (let day of props.forecast.data) {
+                  let wind = day.wind;
+                  data.push([
+                    wind.dawn.velocity_avg,
+                    wind.dawn.direction_degrees
+                  ]);
+                  // data.push({
+                  //   direction: wind.morning.velocity_avg,
+                  //   value: wind.morning.direction_degrees
+                  // });
+                  // data.push({
+                  //   direction: wind.afternoon.velocity_avg,
+                  //   value: wind.afternoon.direction_degrees
+                  // });
+                  // data.push({
+                  //   direction: wind.night.velocity_avg,
+                  //   value: wind.night.direction_degrees
+                  // });
+                };
+                return data;
+            }()),
+            visible: false
           }
         ]
       }
     };
 
     this.handleOnClick = this.handleOnClick.bind(this);
+    this.onChangeChart = this.onChangeChart.bind(this);
     this.onChangeScale = this.onChangeScale.bind(this);
   }
 
   handleOnClick(index, day) {
     this.setState({ selected: index, day, shiftClass: `shift${index}` });
+  }
+
+  onChangeChart(chartSelected) {
+    let series, options = {...this.state.options};
+    series = options.series.map((serie, index) => {
+      serie.visible = index === chartSelected ? true : false;
+      return serie;
+    });
+    options.series = series;
+    this.setState({ chartSelected, options });
   }
 
   onChangeScale() {
@@ -121,7 +197,10 @@ class ForecastPanel extends Component {
   render() {
     return (
       <div className="forecast-panel">
-        <ForecastDetails day={this.state.day} isCelsiusScale={this.state.isCelsiusScale} onChangeScale={this.onChangeScale} />
+        <ForecastDetails day={this.state.day}
+          isCelsiusScale={this.state.isCelsiusScale}
+          onChangeChart={this.onChangeChart}
+          onChangeScale={this.onChangeScale} />
         <ForecastChart options={this.state.options} shift={this.state.shiftClass} />
         <div className="forecast-cards">
           {this.props.forecast.data.map((day, index) => {
