@@ -56,6 +56,13 @@ class ForecastPanel extends Component {
               color: '#878787',
               enabled: true
             }
+          },
+          vector: {
+            dataLabels: {
+              color: '#878787',
+              enabled: true,
+              padding: 20
+            }
           }
         },
         series: [
@@ -127,32 +134,42 @@ class ForecastPanel extends Component {
           },
           {
             name: 'Vento',
+            color: '#878787',
             dataLabels: [{
-              format: '({point.celsius})'
+              format: '{point.length}km/h'
             }],
             data: (function () {
                 let data = [];
                 for (let day of props.forecast.data) {
                   let wind = day.wind;
-                  data.push([
-                    wind.dawn.velocity_avg,
-                    wind.dawn.direction_degrees
-                  ]);
-                  // data.push({
-                  //   direction: wind.morning.velocity_avg,
-                  //   value: wind.morning.direction_degrees
-                  // });
-                  // data.push({
-                  //   direction: wind.afternoon.velocity_avg,
-                  //   value: wind.afternoon.direction_degrees
-                  // });
-                  // data.push({
-                  //   direction: wind.night.velocity_avg,
-                  //   value: wind.night.direction_degrees
-                  // });
+                  data.push({
+                    y: 0,
+                    length: wind.dawn.velocity_avg,
+                    direction: wind.dawn.direction_degrees,
+                    mph: wind.dawn.mph
+                  });
+                  data.push({
+                    y: 0,
+                    length: wind.morning.velocity_avg,
+                    direction: wind.morning.direction_degrees,
+                    mph: wind.morning.mph
+                  });
+                  data.push({
+                    y: 0,
+                    length: wind.afternoon.velocity_avg,
+                    direction: wind.afternoon.direction_degrees,
+                    mph: wind.afternoon.mph
+                  });
+                  data.push({
+                    y: 0,
+                    length: wind.night.velocity_avg,
+                    direction: wind.night.direction_degrees,
+                    mph: wind.night.mph
+                  });
                 };
                 return data;
             }()),
+            type: 'vector',
             visible: false
           }
         ]
@@ -179,18 +196,20 @@ class ForecastPanel extends Component {
   }
 
   onChangeScale() {
-    let serie, options = {...this.state.options};
-    serie = options.series[0];
+    let serie0, serie2, options = {...this.state.options};
+    serie0 = options.series[0];
+    serie2 = options.series[2];
+
     if (this.state.isCelsiusScale) {
-      serie.dataLabels = [{
-        format: '{point.fahrenheit}'
-      }];
+      serie0.dataLabels = [{ format: '{point.fahrenheit}' }];
+      serie2.dataLabels = [{ format: '{point.mph}mph' }];
     } else {
-      serie.dataLabels = [{
-        format: '{point.celsius}'
-      }];
+      serie0.dataLabels = [{ format: '{point.celsius}' }];
+      serie2.dataLabels = [{ format: '{point.length}km/h' }];
     }
-    options.series[0] = serie;
+
+    options.series[0] = serie0;
+    options.series[2] = serie2;
     this.setState({ isCelsiusScale: !this.state.isCelsiusScale, options });
   }
 
