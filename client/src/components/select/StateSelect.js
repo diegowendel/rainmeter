@@ -4,7 +4,7 @@ import { stateOptions } from '../../data/Data';
 
 const StateSelect = (props) => {
   return (
-    <Select className="basic-single"
+    <Select className="basic-single mb-1 mt-3 w-600"
       classNamePrefix="select"
       isDisabled={false}
       isLoading={false}

@@ -6,12 +6,13 @@ import WindSpeed from './WindSpeed';
 class ForecastDetails extends Component {
 
   render() {
-    const { day, isCelsiusScale, onChangeScale } = this.props;
+    const { day, isCelsiusScale, name, onChangeScale, state } = this.props;
     const { date, humidity, rain, temperature, text_icon, wind } = day;
     return (
       <div className="forecast-panel-details">
         <div className="flex-column">
           <div className="flex-column forecast-panel-details-info">
+            <span>{`${name} - ${state}`}</span>
             <span>{DateUtils.getDayOfWeek(date)}</span>
             <span>{text_icon.text.pt}</span>
           </div>

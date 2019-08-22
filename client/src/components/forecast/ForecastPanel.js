@@ -3,6 +3,7 @@ import DateUtils from '../../utils/DateUtils';
 import ForecastChart from './ForecastChart';
 import ForecastDetails from './ForecastDetails';
 import TemperatureCard from './TemperatureCard';
+import './Forecast.css';
 
 class ForecastPanel extends Component {
 
@@ -19,7 +20,7 @@ class ForecastPanel extends Component {
         chart: {
           animation: false,
           height: 100,
-          width: 3500,
+          width: 3821,
           zoomType: null
         },
         credits: {
@@ -36,7 +37,15 @@ class ForecastPanel extends Component {
         },
         xAxis: [
           {
-            visible: false
+            allowDecimals: false,
+            categories: props.forecast.categories,
+            labels: {
+              style: {
+                color: '#bababa'
+              }
+            },
+            lineWidth: 0,
+            visible: true
           }
         ],
         yAxis: [
@@ -136,32 +145,33 @@ class ForecastPanel extends Component {
             name: 'Vento',
             color: '#878787',
             dataLabels: [{
-              format: '{point.length}km/h'
+              format: '{point.length}km/h',
+              verticalAlign: 'top'
             }],
             data: (function () {
                 let data = [];
                 for (let day of props.forecast.data) {
                   let wind = day.wind;
                   data.push({
-                    y: 0,
+                    y: 1,
                     length: wind.dawn.velocity_avg,
                     direction: wind.dawn.direction_degrees,
                     mph: wind.dawn.mph
                   });
                   data.push({
-                    y: 0,
+                    y: 1,
                     length: wind.morning.velocity_avg,
                     direction: wind.morning.direction_degrees,
                     mph: wind.morning.mph
                   });
                   data.push({
-                    y: 0,
+                    y: 1,
                     length: wind.afternoon.velocity_avg,
                     direction: wind.afternoon.direction_degrees,
                     mph: wind.afternoon.mph
                   });
                   data.push({
-                    y: 0,
+                    y: 1,
                     length: wind.night.velocity_avg,
                     direction: wind.night.direction_degrees,
                     mph: wind.night.mph
@@ -202,10 +212,10 @@ class ForecastPanel extends Component {
 
     if (this.state.isCelsiusScale) {
       serie0.dataLabels = [{ format: '{point.fahrenheit}' }];
-      serie2.dataLabels = [{ format: '{point.mph}mph' }];
+      serie2.dataLabels = [{ format: '{point.mph}mph', verticalAlign: 'top' }];
     } else {
       serie0.dataLabels = [{ format: '{point.celsius}' }];
-      serie2.dataLabels = [{ format: '{point.length}km/h' }];
+      serie2.dataLabels = [{ format: '{point.length}km/h', verticalAlign: 'top' }];
     }
 
     options.series[0] = serie0;
@@ -214,15 +224,16 @@ class ForecastPanel extends Component {
   }
 
   render() {
+    const { data, name, state } = this.props.forecast;
     return (
       <div className="forecast-panel">
-        <ForecastDetails day={this.state.day}
+        <ForecastDetails day={this.state.day} name={name} state={state}
           isCelsiusScale={this.state.isCelsiusScale}
           onChangeChart={this.onChangeChart}
           onChangeScale={this.onChangeScale} />
         <ForecastChart options={this.state.options} shift={this.state.shiftClass} />
         <div className="forecast-cards">
-          {this.props.forecast.data.map((day, index) => {
+          {data.map((day, index) => {
             const classForecastDay = this.state.selected === index ? "forecast-card clicable forecast-selected-day" : "forecast-card clicable";
             return (
               <div key={index} className={classForecastDay} onClick={() => this.handleOnClick(index, day)}>

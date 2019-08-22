@@ -3,7 +3,7 @@ import Select from 'react-select';
 
 const CitySelect = (props) => {
   return (
-    <Select className="basic-single"
+    <Select className="basic-single mb-1 w-600"
       classNamePrefix="select"
       isDisabled={props.isDisabled}
       isLoading={props.isLoading}
