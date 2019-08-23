@@ -6,7 +6,7 @@ import WindSpeed from './WindSpeed';
 class ForecastDetails extends Component {
 
   render() {
-    const { day, isCelsiusScale, name, onChangeScale, state } = this.props;
+    const { chartSelected, day, isCelsiusScale, name, onChangeScale, state } = this.props;
     const { date, humidity, rain, temperature, text_icon, wind } = day;
     return (
       <div className="forecast-panel-details">
@@ -35,9 +35,9 @@ class ForecastDetails extends Component {
           <span>Umidade: {humidity.max}%</span>
           <WindSpeed isCelsiusScale={isCelsiusScale} speed={wind.velocity_avg} />
           <div className="btn-group-chart">
-            <button className="btn-chart" onClick={() => this.props.onChangeChart(0)}>Temperatura</button>
-            <button className="btn-chart" onClick={() => this.props.onChangeChart(1)}>Umidade</button>
-            <button className="btn-chart" onClick={() => this.props.onChangeChart(2)}>Vento</button>
+            <button className={chartSelected === 0 ? "btn-chart-active" : "btn-chart"} onClick={() => this.props.onChangeChart(0)}>Temperatura</button>
+            <button className={chartSelected === 1 ? "btn-chart-active" : "btn-chart"} onClick={() => this.props.onChangeChart(1)}>Umidade</button>
+            <button className={chartSelected === 2 ? "btn-chart-active" : "btn-chart"} onClick={() => this.props.onChangeChart(2)}>Vento</button>
           </div>
         </div>
       </div>

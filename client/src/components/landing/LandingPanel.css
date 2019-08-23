@@ -1,0 +1,12 @@
+.landing-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.landing-panel span {
+  color: #777;
+  font-family: cursive;
+  font-size: 16px;
+}

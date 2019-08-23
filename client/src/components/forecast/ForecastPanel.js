@@ -227,7 +227,8 @@ class ForecastPanel extends Component {
     const { data, name, state } = this.props.forecast;
     return (
       <div className="forecast-panel">
-        <ForecastDetails day={this.state.day} name={name} state={state}
+        <ForecastDetails chartSelected={this.state.chartSelected}
+          day={this.state.day} name={name} state={state}
           isCelsiusScale={this.state.isCelsiusScale}
           onChangeChart={this.onChangeChart}
           onChangeScale={this.onChangeScale} />

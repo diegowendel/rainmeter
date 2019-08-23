@@ -1,7 +1,13 @@
 .btn-chart {
-  background-color: #f8f8f8;
-  border: 1px solid #c6c6c6;
-  color: #222;
+  background-color: #f5f5f5;
+  border: 1px solid #d6d6d6;
+  color: #444;
+}
+
+.btn-chart-active {
+  background-color: #ddd;
+  border: 1px solid #999;
+  color: #111;
 }
 
 .btn-group-chart {
@@ -133,7 +139,7 @@
 /* Translate Classes */
 .shift0 > div {
   transition: transform .3s ease-out;
-  transform: translate(-55px, 0px);
+  transform: translate(-35px, 0px);
 }
 
 .shift1 > div {
