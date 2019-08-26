@@ -30,7 +30,7 @@ class App extends Component {
       this.setState({
         cities: res.data,
         loadingCities: false,
-        selectedCity: undefined
+        selectedCity: null
       });
     }).catch(/*todo*/);
   }
@@ -42,8 +42,8 @@ class App extends Component {
           this.findCities(property.value);
         } else {
           this.setState({
-            selectedCity: undefined,
-            selectedState: undefined
+            selectedCity: null,
+            selectedState: null
           });
         }
       } else if (property && propertyName === "selectedCity") {

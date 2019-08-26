@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import DateUtils from '../../utils/DateUtils';
+import ForecastCards from './ForecastCards';
 import ForecastChart from './ForecastChart';
 import ForecastDetails from './ForecastDetails';
-import TemperatureCard from './TemperatureCard';
 import './Forecast.css';
 
 class ForecastPanel extends Component {
@@ -228,29 +227,18 @@ class ForecastPanel extends Component {
     return (
       <div className="forecast-panel">
         <ForecastDetails chartSelected={this.state.chartSelected}
-          day={this.state.day} name={name} state={state}
+          day={this.state.day}
+          name={name}
+          state={state}
           isCelsiusScale={this.state.isCelsiusScale}
           onChangeChart={this.onChangeChart}
           onChangeScale={this.onChangeScale} />
-        <ForecastChart options={this.state.options} shift={this.state.shiftClass} />
-        <div className="forecast-cards">
-          {data.map((day, index) => {
-            const classForecastDay = this.state.selected === index ? "forecast-card clicable forecast-selected-day" : "forecast-card clicable";
-            return (
-              <div key={index} className={classForecastDay} onClick={() => this.handleOnClick(index, day)}>
-                <span className="forecast-weekday">{DateUtils.getDayOfWeekShort(day.date)}</span>
-                <img src={`${process.env.PUBLIC_URL}/img/${day.text_icon.icon.day}.svg`}
-                  alt="Logo"
-                  className="card-icon" />
-                <TemperatureCard isCelsiusScale={this.state.isCelsiusScale}
-                  max={day.temperature.max}
-                  maxf={day.temperature.maxf}
-                  min={day.temperature.min}
-                  minf={day.temperature.minf} />
-              </div>
-            )
-          })}
-        </div>
+        <ForecastChart options={this.state.options}
+          shift={this.state.shiftClass} />
+        <ForecastCards data={data}
+          handleOnClick={this.handleOnClick}
+          isCelsiusScale={this.state.isCelsiusScale}
+          selected={this.state.selected} />
       </div>
     );
   }
