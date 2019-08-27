@@ -6,6 +6,7 @@ import ForecastPanel from './components/forecast/ForecastPanel';
 import ConversionUtils from './utils/ConversionUtils';
 import Spinner from './components/spinner/Spinner';
 import LandingPanel from './components/landing/LandingPanel';
+import LanguageToggle from './components/language/LanguageToggle';
 
 class App extends Component {
 
@@ -109,6 +110,8 @@ class App extends Component {
             this.state.loading && <Spinner />
           }
         </div>
+
+        <LanguageToggle />
       </div>
     );
   }
