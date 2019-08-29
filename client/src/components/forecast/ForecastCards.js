@@ -11,8 +11,7 @@ const ForecastCards = ({ data, handleOnClick, isCelsiusScale, selected }) => {
           <div key={index} className={classForecastDay} onClick={() => handleOnClick(index, day)}>
             <span className="forecast-weekday">{DateUtils.getDayOfWeekShort(day.date)}</span>
             <img src={`${process.env.PUBLIC_URL}/img/${day.text_icon.icon.day}.svg`}
-              alt="Logo"
-              className="card-icon" />
+              alt="card forecast icon" className="card-icon" />
             <TemperatureCard isCelsiusScale={isCelsiusScale}
               max={day.temperature.max}
               maxf={day.temperature.maxf}

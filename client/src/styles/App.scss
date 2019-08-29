@@ -3,8 +3,7 @@
 }
 
 .container-center {
-  display: flex;
-  flex-direction: column;
+  @extend .flex-column;
   align-items: center;
 }
 

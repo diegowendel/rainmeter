@@ -1,0 +1,26 @@
+{
+  "en-US": {
+    "CitySelect.placeholder": "Input a city...",
+    "ForecastDetails.humidity": "Humidity",
+    "ForecastDetails.rain": "Rain",
+    "ForecastDetails.temperature": "Temperature",
+    "ForecastDetails.wind": "Wind",
+    "LandingPanel.rainy": "If you're going to need an umbrella.",
+    "LandingPanel.snowing": "Or you better grab a coat.",
+    "LandingPanel.sunny": "Search for your location and find out if you're going to need sunscream.",
+    "StateSelect.placeholder": "Input a brazilian state...",
+    "WindSpeed.velocity": "Velocity: {velocity}"
+  },
+  "pt-BR": {
+    "CitySelect.placeholder": "Selecione sua cidade...",
+    "ForecastDetails.humidity": "Umidade",
+    "ForecastDetails.rain": "Chuva",
+    "ForecastDetails.temperature": "Temperatura",
+    "ForecastDetails.wind": "Vento",
+    "LandingPanel.rainy": "Se vai precisar de um guarda-chuva.",
+    "LandingPanel.snowing": "Ou se é melhor levar um casaco.",
+    "LandingPanel.sunny": "Busque pela sua cidade e veja se vai precisar passar protetor solar.",
+    "StateSelect.placeholder": "Selecione seu estado...",
+    "WindSpeed.velocity": "Vento: {velocity}"
+  }
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import { FormattedMessage } from 'react-intl';
 import { stateOptions } from '../../data/Data';
 
 const StateSelect = (props) => {
@@ -14,7 +15,7 @@ const StateSelect = (props) => {
       options={stateOptions}
       onChange={(selectedState) => props.onChange("selectedState", selectedState)}
       value={props.value}
-      placeholder="Selecione seu estado..." />
+      placeholder={<FormattedMessage id="StateSelect.placeholder" />} />
   );
 };
 

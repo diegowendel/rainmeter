@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import './App.css';
 import API from './service/ClimaTempoAPI';
 import { CitySelect, StateSelect } from './components/select';
 import ForecastPanel from './components/forecast/ForecastPanel';
@@ -7,6 +6,7 @@ import ConversionUtils from './utils/ConversionUtils';
 import Spinner from './components/spinner/Spinner';
 import LandingPanel from './components/landing/LandingPanel';
 import LanguageToggle from './components/language/LanguageToggle';
+import './styles/App.scss';
 
 class App extends Component {
 
@@ -85,6 +85,7 @@ class App extends Component {
   }
 
   render() {
+    const { locale, onChangeLocale } = this.props;
     return (
       <div className="container container-center">
         <div>
@@ -100,7 +101,7 @@ class App extends Component {
 
           {this.state.forecast ?
             <Fragment>
-              <ForecastPanel forecast={this.state.forecast}/>
+              <ForecastPanel forecast={this.state.forecast} locale={locale} />
               <a className="link-climatempo" href="https://www.climatempo.com.br/">climatempo.com.br</a>
             </Fragment> :
             <LandingPanel />
@@ -111,7 +112,7 @@ class App extends Component {
           }
         </div>
 
-        <LanguageToggle />
+        <LanguageToggle locale={locale} onChangeLocale={onChangeLocale} />
       </div>
     );
   }

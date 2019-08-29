@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import './LanguageToggle.css';
+import '../../styles/LanguageToggle.scss';
 
 class LanguageToggle extends PureComponent {
 
@@ -7,27 +7,32 @@ class LanguageToggle extends PureComponent {
     super(props);
 
     this.state = {
-      isEnglish: true,
-      toggleClass: 'item item-3'
+      toggleClass: 'toggle'
     };
 
     this.onChange = this.onChange.bind(this);
   }
 
+  componentDidMount() {
+    const isEnglish = this.props.locale.startsWith("en");
+    const toggleClass = isEnglish ? "toggle" : "toggle portuguese-selected";
+    this.setState({ toggleClass });
+  }
+
   onChange() {
-    const toggleClass = this.state.isEnglish ? "item item-3" : "item item-3 item-translate";
-    this.setState({ isEnglish: !this.state.isEnglish, toggleClass });
+    const isEnglish = this.props.locale.startsWith("en");
+    const toggleClass = isEnglish ? "toggle portuguese-selected" : "toggle";
+    this.setState({ toggleClass });
+    this.props.onChangeLocale(this.props.locale.startsWith("en") ? "pt-BR" : "en-US");
   }
 
   render() {
     return (
       <div className="grid" onClick={this.onChange}>
-        <div className="item item-1">En</div>
-        <div className="item item-2">Pt</div>
+        <div className="option-en">En</div>
+        <div className="option-pt">Pt</div>
         <div className={this.state.toggleClass}>
-          <div style={{backgroundColor: '#eee', margin: '1px', borderRadius: '5px', width: '30px'}}>
-            alo
-          </div>
+          <div className="toggle-selector" />
         </div>
       </div>
     );

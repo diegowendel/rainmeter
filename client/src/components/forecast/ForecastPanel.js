@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ForecastCards from './ForecastCards';
 import ForecastChart from './ForecastChart';
 import ForecastDetails from './ForecastDetails';
-import './Forecast.css';
+import '../../styles/Forecast.scss';
 
 class ForecastPanel extends Component {
 
@@ -228,9 +228,9 @@ class ForecastPanel extends Component {
       <div className="forecast-panel">
         <ForecastDetails chartSelected={this.state.chartSelected}
           day={this.state.day}
-          name={name}
-          state={state}
+          name={name} state={state}
           isCelsiusScale={this.state.isCelsiusScale}
+          locale={this.props.locale}
           onChangeChart={this.onChangeChart}
           onChangeScale={this.onChangeScale} />
         <ForecastChart options={this.state.options}

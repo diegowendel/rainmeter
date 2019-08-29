@@ -1,3 +1,18 @@
+@import 'App.scss';
+
+/* Variables */
+$translate0: -35px;
+$translate1: -593px;
+$translate2: -1131px;
+$translate3: -1669px;
+$translate4: -2207px;
+$translate5: -2745px;
+$translate6: -3283px;
+
+$colorLightGray: #bababa;
+$colorGray: #878787;
+
+/* Classes */
 .btn-chart {
   background-color: #f5f5f5;
   border: 1px solid #d6d6d6;
@@ -11,8 +26,7 @@
 }
 
 .btn-group-chart {
-  display: flex;
-  flex-direction: row;
+  @extend .flex-row;
   padding-top: 15px;
 }
 
@@ -23,17 +37,15 @@
 }
 
 .forecast-card {
+  @extend .flex-column;
   border: 1px solid transparent;
   border-radius: 3px;
-  display: flex;
-  flex-direction: column;
   width: 75px;
 }
 
 .forecast-cards {
+  @extend .flex-row;
   background-color: #fff;
-  display: flex;
-  flex-direction: row;
   padding: 0px 15px 10px 15px;
 }
 
@@ -43,34 +55,31 @@
 }
 
 .forecast-panel {
+  @extend .flex-column;
   background-color: #fff;
   border-radius: 5px;
   border: 1px solid #ddd;
-  display: flex;
-  flex-direction: column;
   padding: 15px;
   width: 600px;
 }
 
 .forecast-panel-details {
-  display: flex;
-  flex-direction: row;
+  @extend .flex-row;
   padding: 10px 15px 0px 15px;
 }
 
 .forecast-panel-details-info {
-  color: #878787;
+  color: $colorGray;
   text-align: left;
 }
 
 .forecast-panel-details-info-right {
-  color: #878787;
+  color: $colorGray;
   padding-left: 50px;
 }
 
 .forecast-rain {
-  display: flex;
-  flex-direction: row;
+  @extend .flex-row;
   justify-content: space-between;
   align-content: center;
 }
@@ -83,10 +92,9 @@
 }
 
 .forecast-temperature {
-  display: flex;
-  flex-direction: row;
+  @extend .flex-row;
   justify-content: space-around;
-  color: #bababa;
+  color: $colorLightGray;
   padding-left: 8px;
   padding-right: 8px;
 }
@@ -98,12 +106,11 @@
 
 .forecast-weekday {
   align-self: center;
-  color: #bababa;
+  color: $colorLightGray;
 }
 
 .forecast-wind {
-  display: flex;
-  flex-direction: row;
+  @extend .flex-row;
   justify-content: space-between;
   align-content: center;
 }
@@ -119,17 +126,17 @@
 }
 
 .temperature-inactive {
+  @extend .clicable;
   color: #1a0dab;
-  cursor: pointer;
   font-size: 16px;
 }
 
 .temperature-max {
-  color: #878787;
+  color: $colorGray;
 }
 
 .temperature-min {
-  color: #bababa;
+  color: $colorLightGray;
 }
 
 .temperature-scales-toggle {
@@ -139,35 +146,35 @@
 /* Translate Classes */
 .shift0 > div {
   transition: transform .3s ease-out;
-  transform: translate(-35px, 0px);
+  transform: translate($translate0, 0px);
 }
 
 .shift1 > div {
   transition: transform .3s ease-out;
-  transform: translate(-593px, 0px);
+  transform: translate($translate1, 0px);
 }
 
 .shift2 > div {
   transition: transform .3s ease-out;
-  transform: translate(-1131px, 0px);
+  transform: translate($translate2, 0px);
 }
 
 .shift3 > div {
   transition: transform .3s ease-out;
-  transform: translate(-1669px, 0px);
+  transform: translate($translate3, 0px);
 }
 
 .shift4 > div {
   transition: transform .3s ease-out;
-  transform: translate(-2207px, 0px);
+  transform: translate($translate4, 0px);
 }
 
 .shift5 > div {
   transition: transform .3s ease-out;
-  transform: translate(-2745px, 0px);
+  transform: translate($translate5, 0px);
 }
 
 .shift6 > div {
   transition: transform .3s ease-out;
-  transform: translate(-3283px, 0px);
+  transform: translate($translate6, 0px);
 }

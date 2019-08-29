@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import { FormattedMessage } from 'react-intl';
 
 const CitySelect = (props) => {
   return (
@@ -15,7 +16,7 @@ const CitySelect = (props) => {
       options={props.options}
       onChange={(selectedCity) => props.onChange("selectedCity", selectedCity)}
       value={props.value}
-      placeholder="Selecione sua cidade..." />
+      placeholder={<FormattedMessage id="CitySelect.placeholder" />} />
   );
 };
 

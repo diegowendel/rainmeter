@@ -1,6 +1,7 @@
+@import 'App.scss';
+
 .landing-panel {
-  display: flex;
-  flex-direction: column;
+  @extend .flex-column;
   align-items: center;
   margin-top: 15px;
 }
