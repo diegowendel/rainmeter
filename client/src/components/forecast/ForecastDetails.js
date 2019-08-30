@@ -11,7 +11,9 @@ const ForecastDetails = ({ chartSelected, day, isCelsiusScale, locale, name, onC
       <div className="flex-column">
         <div className="flex-column forecast-panel-details-info">
           <span>{`${name} - ${state}`}</span>
-          <span>{DateUtils.getDayOfWeek(date)}</span>
+          <span>
+            <FormattedMessage id={DateUtils.getDayOfWeekKey(date)} />
+          </span>
           <span>{locale.startsWith("en") ? text_icon.text.en : text_icon.text.pt}</span>
         </div>
         <div className="flex-row">
@@ -33,9 +35,15 @@ const ForecastDetails = ({ chartSelected, day, isCelsiusScale, locale, name, onC
         <span><FormattedMessage id="ForecastDetails.humidity" />: {humidity.max}%</span>
         <WindSpeed isCelsiusScale={isCelsiusScale} velocity={wind.velocity_avg} />
         <div className="btn-group-chart">
-          <button className={chartSelected === 0 ? "btn-chart-active" : "btn-chart"} onClick={() => onChangeChart(0)}><FormattedMessage id="ForecastDetails.temperature" /></button>
-          <button className={chartSelected === 1 ? "btn-chart-active" : "btn-chart"} onClick={() => onChangeChart(1)}><FormattedMessage id="ForecastDetails.humidity" /></button>
-          <button className={chartSelected === 2 ? "btn-chart-active" : "btn-chart"} onClick={() => onChangeChart(2)}><FormattedMessage id="ForecastDetails.wind" /></button>
+          <button className={chartSelected === 0 ? "btn-chart-active" : "btn-chart"} onClick={() => onChangeChart(0)}>
+            <FormattedMessage id="ForecastDetails.temperature" />
+          </button>
+          <button className={chartSelected === 1 ? "btn-chart-active" : "btn-chart"} onClick={() => onChangeChart(1)}>
+            <FormattedMessage id="ForecastDetails.humidity" />
+          </button>
+          <button className={chartSelected === 2 ? "btn-chart-active" : "btn-chart"} onClick={() => onChangeChart(2)}>
+            <FormattedMessage id="ForecastDetails.wind" />
+          </button>
         </div>
       </div>
     </div>

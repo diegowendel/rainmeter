@@ -88,31 +88,35 @@ class App extends Component {
     const { locale, onChangeLocale } = this.props;
     return (
       <div className="container container-center">
-        <div>
-          <StateSelect onChange={this.onChange}
-            value={this.state.selectedState} />
+        <header>
+          <h3>Rainmeter</h3>
+          <LanguageToggle locale={locale} onChangeLocale={onChangeLocale} />
+        </header>
+        <main>
+          <div>
+            <StateSelect onChange={this.onChange}
+              value={this.state.selectedState} />
 
-          <CitySelect
-            isDisabled={!this.state.selectedState}
-            isLoading={this.state.loadingCities}
-            onChange={this.onChange}
-            options={this.state.cities}
-            value={this.state.selectedCity} />
+            <CitySelect
+              isDisabled={!this.state.selectedState}
+              isLoading={this.state.loadingCities}
+              onChange={this.onChange}
+              options={this.state.cities}
+              value={this.state.selectedCity} />
 
-          {this.state.forecast ?
-            <Fragment>
-              <ForecastPanel forecast={this.state.forecast} locale={locale} />
-              <a className="link-climatempo" href="https://www.climatempo.com.br/">climatempo.com.br</a>
-            </Fragment> :
-            <LandingPanel />
-          }
+            {this.state.forecast ?
+              <Fragment>
+                <ForecastPanel forecast={this.state.forecast} locale={locale} />
+                <a className="link-climatempo" href="https://www.climatempo.com.br/">climatempo.com.br</a>
+              </Fragment> :
+              <LandingPanel />
+            }
 
-          {
-            this.state.loading && <Spinner />
-          }
-        </div>
-
-        <LanguageToggle locale={locale} onChangeLocale={onChangeLocale} />
+            {
+              this.state.loading && <Spinner />
+            }
+          </div>
+        </main>
       </div>
     );
   }
