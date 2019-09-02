@@ -87,9 +87,12 @@ class App extends Component {
   render() {
     const { locale, onChangeLocale } = this.props;
     return (
-      <div className="container container-center">
+      <div className="container-fluid container-center">
         <header>
-          <h3>Rainmeter</h3>
+          <div className="flex-row mt-3">
+            <img src={`${process.env.PUBLIC_URL}/img/water-drop.svg`} alt="rainmeter logo" className="logo" />
+            <h3>Rainmeter</h3>
+          </div>
           <LanguageToggle locale={locale} onChangeLocale={onChangeLocale} />
         </header>
         <main>

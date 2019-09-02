@@ -14,7 +14,7 @@ const ForecastCards = ({ data, handleOnClick, isCelsiusScale, selected }) => {
               <FormattedMessage id={DateUtils.getDayOfWeekShortKey(day.date)} />
             </span>
             <img src={`${process.env.PUBLIC_URL}/img/${day.text_icon.icon.day}.svg`}
-              alt="card forecast icon" className="card-icon" />
+              alt="card" className="card-icon" />
             <TemperatureCard isCelsiusScale={isCelsiusScale}
               max={day.temperature.max}
               maxf={day.temperature.maxf}

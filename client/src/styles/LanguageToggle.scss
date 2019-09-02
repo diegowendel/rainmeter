@@ -1,20 +1,24 @@
 @import 'App.scss';
 
+$borderRadius: 50px;
+$optionSize: 30px;
+$toggleSize: 25px;
+
 .grid {
   @extend .clicable;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid #999;
-  border-radius: 5px;
+  border-radius: $borderRadius;
   align-self: baseline;
 }
 
 .option {
-  background-color: #141518;
+  background-color: #666;
   color: #eee;
   font-weight: 700;
-  width: 40px;
-  height: 38px;
+  width: $optionSize;
+  height: $optionSize;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,21 +29,21 @@
 .option-en {
   @extend .option;
   grid-column: 1 / 3;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: $borderRadius;
+  border-bottom-left-radius: $borderRadius;
 }
 
 .option-pt {
   @extend .option;
   grid-column: 3 / 5;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: $borderRadius;
+  border-bottom-right-radius: $borderRadius;
 }
 
 .toggle {
   @extend .option;
   grid-column: 3 / 5;
-  border-radius: 5px;
+  border-radius: $borderRadius;
   transition: transform .1s ease-out;
   transform: translate(0px, 0px);
 }
@@ -47,12 +51,12 @@
 .toggle-selector {
   background-color: #eee;
   margin: 1px;
-  border-radius: 5px;
-  width: 30px;
-  height: 30px;
+  border-radius: $borderRadius;
+  width: $toggleSize;
+  height: $toggleSize;
 }
 
 .portuguese-selected {
   transition: transform .1s ease-out;
-  transform: translate(-40px, 0px);
+  transform: translate(-30px, 0px);
 }

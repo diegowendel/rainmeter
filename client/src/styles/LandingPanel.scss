@@ -3,11 +3,12 @@
 .landing-panel {
   @extend .flex-column;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 .landing-panel span {
   color: #777;
-  font-family: cursive;
+  font-family: 'ABeeZee', sans-serif;
   font-size: 16px;
+  font-weight: 600;
 }
