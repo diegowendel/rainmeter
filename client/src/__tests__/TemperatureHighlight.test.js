@@ -17,20 +17,22 @@ afterEach(() => {
   container = null;
 });
 
-it("Renders with Celsius scale", () => {
-  act(() => {
-    render(<TemperatureHighlight isCelsiusScale={true}
-      temperature={20} temperaturef={68} />, container);
+describe("<TemperatureHighlight />", () => {
+  it("Renders with Celsius scale", () => {
+    act(() => {
+      render(<TemperatureHighlight isCelsiusScale={true}
+        temperature={20} temperaturef={68} />, container);
+    });
+
+    expect(container.querySelector(".forecast-temperature-highlight").textContent).toBe("20");
   });
 
-  expect(container.querySelector(".forecast-temperature-highlight").textContent).toBe("20");
-});
+  it("Renders with Fahrenheit scale", () => {
+    act(() => {
+      render(<TemperatureHighlight isCelsiusScale={false}
+        temperature={20} temperaturef={68} />, container);
+    });
 
-it("Renders with Fahrenheit scale", () => {
-  act(() => {
-    render(<TemperatureHighlight isCelsiusScale={false}
-      temperature={20} temperaturef={68} />, container);
+    expect(container.querySelector(".forecast-temperature-highlight").textContent).toBe("68");
   });
-
-  expect(container.querySelector(".forecast-temperature-highlight").textContent).toBe("68");
 });

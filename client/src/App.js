@@ -16,8 +16,8 @@ class App extends Component {
     this.state = {
       cities: undefined,
       forecast: undefined,
-      loading: undefined,
-      loadingCities: undefined,
+      loading: false,
+      loadingCities: false,
       selectedCity: undefined,
       selectedState: undefined
     };

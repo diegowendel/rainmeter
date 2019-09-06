@@ -17,32 +17,34 @@ afterEach(() => {
   container = null;
 });
 
-it("Renders without crashing", () => {
-  const options = {
-    chart: {
-      type: 'bar'
-    },
-    title: {
-      text: 'Fruit Consumption'
-    },
-    xAxis: {
-      categories: ['Apples', 'Bananas', 'Oranges']
-    },
-    yAxis: {
+describe("<ForecastPanel />", () => {
+  it("Renders without crashing", () => {
+    const options = {
+      chart: {
+        type: 'bar'
+      },
       title: {
-        text: 'Fruit eaten'
-      }
-    },
-    series: [{
-      name: 'Jane',
-      data: [1, 0, 4]
-    }, {
-      name: 'John',
-      data: [5, 7, 3]
-    }]
-  };
+        text: 'Fruit Consumption'
+      },
+      xAxis: {
+        categories: ['Apples', 'Bananas', 'Oranges']
+      },
+      yAxis: {
+        title: {
+          text: 'Fruit eaten'
+        }
+      },
+      series: [{
+        name: 'Jane',
+        data: [1, 0, 4]
+      }, {
+        name: 'John',
+        data: [5, 7, 3]
+      }]
+    };
 
-  act(() => {
-    render(<ForecastChart shift="shift0" options={options} />, container);
+    act(() => {
+      render(<ForecastChart shift="shift0" options={options} />, container);
+    });
   });
 });

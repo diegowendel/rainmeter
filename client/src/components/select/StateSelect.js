@@ -13,7 +13,7 @@ const customStyles = {
 const StateSelect = (props) => {
   return (
     <Select className="basic-single mb-1 w-600"
-      classNamePrefix="select"
+      classNamePrefix="select_state"
       isDisabled={false}
       isLoading={false}
       isClearable={true}

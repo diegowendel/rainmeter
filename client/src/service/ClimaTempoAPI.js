@@ -8,10 +8,10 @@ class ClimaTempoAPI {
     return Requester.get(encodedUri);
   }
 
-  static getWeatherByCity(city) {
-    const encodedUri = encodeURI(`http://apiadvisor.climatempo.com.br/api/v1/weather/locale/${city}/current?token=${API_TOKEN}`);
-    return Requester.get(encodedUri);
-  }
+  // static getWeatherByCity(city) {
+  //   const encodedUri = encodeURI(`http://apiadvisor.climatempo.com.br/api/v1/weather/locale/${city}/current?token=${API_TOKEN}`);
+  //   return Requester.get(encodedUri);
+  // }
 
   static getForecastSevenDays(city) {
     const encodedUri = encodeURI(`http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/${city}/days/15?token=${API_TOKEN}`);

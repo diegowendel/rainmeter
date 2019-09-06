@@ -17,22 +17,24 @@ afterEach(() => {
   container = null;
 });
 
-it("Renders with Celsius scale", () => {
-  act(() => {
-    render(<TemperatureCard isCelsiusScale={true}
-      max={20} maxf={68} min={12} minf={54} />, container);
+describe("<TemperatureCard />", () => {
+  it("Renders with Celsius scale", () => {
+    act(() => {
+      render(<TemperatureCard isCelsiusScale={true}
+        max={20} maxf={68} min={12} minf={54} />, container);
+    });
+
+    expect(container.querySelector(".forecast-temperature > .temperature-min").textContent).toBe("12°");
+    expect(container.querySelector(".forecast-temperature > .temperature-max").textContent).toBe("20°");
   });
 
-  expect(container.querySelector(".forecast-temperature > .temperature-min").textContent).toBe("12°");
-  expect(container.querySelector(".forecast-temperature > .temperature-max").textContent).toBe("20°");
-});
+  it("Renders with Fahrenheit scale", () => {
+    act(() => {
+      render(<TemperatureCard isCelsiusScale={false}
+        max={20} maxf={68} min={12} minf={54} />, container);
+    });
 
-it("Renders with Fahrenheit scale", () => {
-  act(() => {
-    render(<TemperatureCard isCelsiusScale={false}
-      max={20} maxf={68} min={12} minf={54} />, container);
+    expect(container.querySelector(".forecast-temperature > .temperature-min").textContent).toBe("54°");
+    expect(container.querySelector(".forecast-temperature > .temperature-max").textContent).toBe("68°");
   });
-
-  expect(container.querySelector(".forecast-temperature > .temperature-min").textContent).toBe("54°");
-  expect(container.querySelector(".forecast-temperature > .temperature-max").textContent).toBe("68°");
 });

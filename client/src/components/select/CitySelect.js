@@ -12,7 +12,7 @@ const customStyles = {
 const CitySelect = (props) => {
   return (
     <Select className="basic-single mb-1 w-600"
-      classNamePrefix="select"
+      classNamePrefix="select_city"
       isDisabled={props.isDisabled}
       isLoading={props.isLoading}
       isClearable={true}

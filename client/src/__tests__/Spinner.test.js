@@ -17,10 +17,12 @@ afterEach(() => {
   container = null;
 });
 
-it("Renders without crashing", () => {
-  act(() => {
-    render(<Spinner />, container);
-  });
+describe("<Spinner />", () => {
+  it("Renders without crashing", () => {
+    act(() => {
+      render(<Spinner />, container);
+    });
 
-  expect(container).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
+  });
 });
