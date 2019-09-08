@@ -47,8 +47,10 @@ class App extends Component {
             selectedState: null
           });
         }
-      } else if (property && propertyName === "selectedCity") {
-        this.setState({ loading: true }, () => this.setData());
+      } else {
+        if (property) {
+          this.setState({ loading: true }, () => this.setData());
+        }
       }
     });
   }
