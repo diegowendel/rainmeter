@@ -7,6 +7,9 @@ cache:
   directories:
     - node_modules # Cache node_modules for faster builds
 
+before_script:
+  - cd client
+
 script:
   - npm test # Run tests
   - npm run build # Create a production build
