@@ -11,5 +11,6 @@ before_script:
   - cd client
 
 script:
+  - npm install
   - npm test # Run tests
   - npm run build # Create a production build
