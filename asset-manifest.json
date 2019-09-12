@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/rainmeter/static/css/main.9a937666.chunk.css",
+    "main.js": "/rainmeter/static/js/main.1739ccfa.chunk.js",
+    "main.js.map": "/rainmeter/static/js/main.1739ccfa.chunk.js.map",
+    "runtime~main.js": "/rainmeter/static/js/runtime~main.74d6ad6b.js",
+    "runtime~main.js.map": "/rainmeter/static/js/runtime~main.74d6ad6b.js.map",
+    "static/js/2.6d436d7d.chunk.js": "/rainmeter/static/js/2.6d436d7d.chunk.js",
+    "static/js/2.6d436d7d.chunk.js.map": "/rainmeter/static/js/2.6d436d7d.chunk.js.map",
+    "index.html": "/rainmeter/index.html",
+    "precache-manifest.f712f47c51cc730b3f1307f50a6ba3ca.js": "/rainmeter/precache-manifest.f712f47c51cc730b3f1307f50a6ba3ca.js",
+    "service-worker.js": "/rainmeter/service-worker.js",
+    "static/css/main.9a937666.chunk.css.map": "/rainmeter/static/css/main.9a937666.chunk.css.map"
+  }
+}
