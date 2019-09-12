@@ -9,8 +9,11 @@ cache:
 
 script:
   - npm install
-  - npm test # Run tests
+  - npm test -- --coverage --watchAll=false # Run tests with coverage
   - npm run build # Create a production build
+
+after_script:
+  - npm run coveralls
 
 deploy:
   provider: pages

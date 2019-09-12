@@ -1,5 +1,6 @@
 # Rainmeter
 ![Build Status](https://travis-ci.com/diegowendel/rainmeter.svg?branch=master)
+![Coverage Status](https://coveralls.io/repos/github/diegowendel/rainmeter/badge.svg?branch=master)
 
 Rainmeter is a weather forecast app which has the focus on show rainy days foreseen.
 
