@@ -14,3 +14,11 @@ script:
   - npm install
   - npm test # Run tests
   - npm run build # Create a production build
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: build
+  on:
+    branch: master

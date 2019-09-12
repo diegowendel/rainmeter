@@ -83,7 +83,10 @@ class App extends Component {
       forecast.data = data;
       forecast.categories = categories;
       this.setState({ forecast, loading: false });
-    }).catch(/* todo */);
+    }).catch(err => {
+      alert('Something bad happened :(\nPlease, try again later.');
+      this.setState({ loading: false });
+    });
   }
 
   render() {
